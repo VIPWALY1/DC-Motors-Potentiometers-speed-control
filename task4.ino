@@ -17,19 +17,19 @@ void setup()
   pinMode(sw, INPUT); 
   pinMode(sw2, INPUT); 
   Serial.begin(9600);}
-void loop(){ 
+void loop(){  reading2=analogRead(re2); reading=analogRead(re);
   if (Serial.available()) {
-    reading3=Serial.read();
-  if(reading3=='f'){ reading2=analogRead(re2); analogWrite(puz2,reading2/4);}
-  else if(reading3=='s'){ reading=analogRead(re); analogWrite(puz,reading/4);}  
+  if(reading3=='f'){reading2=analogRead(re2); analogWrite(puz2,reading2);}
+  if(reading3=='s'){reading =analogRead(re ); analogWrite(puz ,reading );}  
   }
   if (digitalRead(sw) == 1) { 
-    reading=analogRead(re);
-    analogWrite(puz,reading / 4);
-  }
+  reading3=Serial.read();
+   analogWrite(puz,reading / 4);}
+  else{ analogWrite(puz,0);}
   
-   reading2=analogRead(re2);  
+  
+  
   if (digitalRead(sw2) == 1) {
     analogWrite(puz2,reading2/4);
-  }
+  } else{ analogWrite(puz2,0);}
 } 
