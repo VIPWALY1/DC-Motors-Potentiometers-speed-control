@@ -12,13 +12,14 @@ void setup()
   pinMode(puz2, OUTPUT);
   pinMode(re, INPUT);
   pinMode(re2, INPUT);
-  pinMode(sw, INPUT_PULLUP); 
-  pinMode(sw2, INPUT_PULLUP); 
+  pinMode(sw, INPUT); 
+  pinMode(sw2, INPUT); 
   Serial.begin(9600);}
 void loop(){ 
   if (Serial.available()) {
     reading3 =Serial.read();
   if(reading3=='f'){analogWrite(puz2,analogRead(re2));}
+  else if(reading3=='s'){analogWrite(puz,analogRead(re));}
    
   }
   reading = analogRead(re);
