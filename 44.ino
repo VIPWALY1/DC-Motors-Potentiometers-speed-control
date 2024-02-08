@@ -20,21 +20,12 @@ void setup() {
 }
 
 void loop() {
-  reading = analogRead(re);
-  if (digitalRead(sw) == 1) { 
-    analogWrite(puz,reading / 4);
-  } else {
-    analogWrite(puz, 0);
-  }
-  reading2 = analogRead(re2);
-  if (digitalRead(sw2) == 1) {
-    analogWrite(puz2,reading2/4);
-  } else {
-    analogWrite(puz2,0);
-  }
-  if (Serial.available()) {
-    reading3 =Serial.read();
-  if(reading3='f'){analogWrite(puz2,analogRead(re2));  ;delay(86400000);             }
    
-  }
+  if(Serial.available()){
+  reading3=Serial.read();
+  if(reading3=='L'){reading=analogRead(re);analogWrite(puz,reading/4);}
+                         
+                                 
+                                 
+                                 }
 }
