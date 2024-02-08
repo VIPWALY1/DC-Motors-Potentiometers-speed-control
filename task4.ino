@@ -7,6 +7,8 @@ int sw = 13;
 int sw2 = 12;
 char reading3;
 int reading2 = 0;
+
+
 void setup() 
 {pinMode(puz, OUTPUT);
   pinMode(puz2, OUTPUT);
@@ -17,34 +19,17 @@ void setup()
   Serial.begin(9600);}
 void loop(){ 
   if (Serial.available()) {
-    reading3 =Serial.read();
-  if(reading3=='f'){analogWrite(puz2,analogRead(re2));}
-  else if(reading3=='s'){analogWrite(puz,analogRead(re));}
-   
+    reading3=Serial.read();
+  if(reading3=='f'){ reading2=analogRead(re2); analogWrite(puz2,reading2/4);}
+  else if(reading3=='s'){ reading=analogRead(re); analogWrite(puz,reading/4);}  
   }
-  reading = analogRead(re);
   if (digitalRead(sw) == 1) { 
+    reading=analogRead(re);
     analogWrite(puz,reading / 4);
   }
   
-  reading2 = analogRead(re2);
+   reading2=analogRead(re2);  
   if (digitalRead(sw2) == 1) {
     analogWrite(puz2,reading2/4);
-  } 
-  
- 
-
-  reading = analogRead(re);
-  if (digitalRead(sw) == 1) { 
-    analogWrite(puz,reading / 4);
-  } else {
-    analogWrite(puz, 0);
   }
-  reading2 = analogRead(re2);
-  if (digitalRead(sw2) == 1) {
-    analogWrite(puz2,reading2/4);
-  } else {
-    analogWrite(puz2,0);
-  }
-
-}
+} 
